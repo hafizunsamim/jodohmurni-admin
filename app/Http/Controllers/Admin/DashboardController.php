@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\AffiliateCommission;
 use App\Models\AffiliateProRequest;
 use App\Models\ExternalAffiliateApplication;
+use App\Services\Ga4AnalyticsService;
 
 class DashboardController extends Controller
 {
@@ -88,6 +89,25 @@ public function index()
 
     $affiliateProPendingTotal = (int) $affiliateProPendingRegistered + (int) $affiliateProPendingExternal;
 
+    $ga4EventReport = null;
+    $ga4EventReportError = null;
+    try {
+        $propertyId = (string) config('analytics.ga4.property_id');
+        $credentialsPath = (string) config('analytics.ga4.credentials_path');
+        $oauthClientId = (string) config('analytics.ga4.oauth.client_id');
+        $oauthClientSecret = (string) config('analytics.ga4.oauth.client_secret');
+        $oauthRefreshToken = (string) config('analytics.ga4.oauth.refresh_token');
+
+        $hasOauth = $oauthClientId !== '' && $oauthClientSecret !== '' && $oauthRefreshToken !== '';
+        $hasServiceAccountJson = $credentialsPath !== '';
+
+        if ($propertyId !== '' && ($hasOauth || $hasServiceAccountJson)) {
+            $ga4EventReport = app(Ga4AnalyticsService::class)->eventCounts();
+        }
+    } catch (\Throwable $e) {
+        $ga4EventReportError = $e->getMessage();
+    }
+
     return view('admin.dashboard', compact(
         'totalUsers',
         'totalMale',
@@ -103,7 +123,9 @@ public function index()
         'countryTotals',
         'affiliateProPendingRegistered',
         'affiliateProPendingExternal',
-        'affiliateProPendingTotal'
+        'affiliateProPendingTotal',
+        'ga4EventReport',
+        'ga4EventReportError'
     ));
 }
 }

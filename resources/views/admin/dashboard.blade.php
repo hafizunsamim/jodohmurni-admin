@@ -103,6 +103,71 @@
     </div>
 </div>
 
+<div class="row g-4 mt-1">
+    <div class="col-12">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <div class="d-flex align-items-start justify-content-between gap-3 flex-wrap">
+                    <div>
+                        <h6 class="text-muted mb-1">Google Analytics (GA4) — Event Summary</h6>
+                        <div class="small text-muted">
+                            @if(!empty($ga4EventReport))
+                                Range: {{ $ga4EventReport['start_date'] }} → {{ $ga4EventReport['end_date'] }}
+                            @else
+                                Not configured
+                            @endif
+                        </div>
+                    </div>
+                </div>
+
+                @if(!empty($ga4EventReportError))
+                    <div class="alert alert-warning mt-3 mb-0" role="alert">
+                        {{ $ga4EventReportError }}
+                    </div>
+                @elseif(!empty($ga4EventReport))
+                    @php
+                        $ga4EventLabels = [
+                            'jm_homepage_visit' => 'Bilangan pengguna yang melawat homepage',
+                            'sign_up' => 'Bilangan user yang mendaftar akaun',
+                            'login' => 'Bilangan user yang log masuk',
+                            'subscription_package_click' => 'Bilangan user yang click subscription',
+                            'purchase' => 'Bilangan user yang berjaya subscribe package',
+                            'view_profile' => 'Bilangan user yang melihat profil',
+                            'like_profile' => 'Bilangan user yang like profile',
+                            'match_success' => 'Bilangan user yang berjaya matching pasangan',
+                        ];
+                    @endphp
+                    <div class="table-responsive mt-3">
+                        <table class="table table-sm align-middle mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Event</th>
+                                    <th class="text-end">Count</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach(($ga4EventReport['rows'] ?? []) as $row)
+                                    <tr>
+                                        @php($eventKey = (string)($row['event_name'] ?? ''))
+                                        <td class="fw-semibold">
+                                            {{ $ga4EventLabels[$eventKey] ?? ($eventKey ?: '—') }}
+                                        </td>
+                                        <td class="text-end">{{ number_format((int)($row['event_count'] ?? 0)) }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                @else
+                    <div class="mt-3 small text-muted">
+                        Set <code>GA4_PROPERTY_ID</code> dan OAuth env (<code>GA4_OAUTH_CLIENT_ID</code>, <code>GA4_OAUTH_CLIENT_SECRET</code>, <code>GA4_OAUTH_REFRESH_TOKEN</code>) dalam <code>.env</code> untuk aktifkan widget ini.
+                    </div>
+                @endif
+            </div>
+        </div>
+    </div>
+</div>
+
 
 
 
