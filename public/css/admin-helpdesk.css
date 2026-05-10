@@ -1,0 +1,131 @@
+/* Timeline (match member helpdesk style) */
+.helpdesk-page--wide {
+  max-width: 900px;
+}
+
+.helpdesk-summary-card {
+  border: 1px solid #e0e0e0;
+  background: #fff;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+}
+
+.helpdesk-status-pill {
+  display: inline-block;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  background: #e8f5e9;
+  color: #1b5e20;
+}
+
+.helpdesk-timeline-page-title {
+  color: #0a7e3e;
+  font-weight: 600;
+}
+
+.helpdesk-timeline-item {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1.35rem;
+  align-items: flex-start;
+}
+
+.helpdesk-timeline-rail {
+  position: relative;
+  width: 28px;
+  flex-shrink: 0;
+  min-height: 100%;
+  border-left: 2px solid #cfd8dc;
+  margin-left: 11px;
+  padding-bottom: 0.25rem;
+}
+
+.helpdesk-timeline-item:last-child .helpdesk-timeline-rail {
+  border-left-color: transparent;
+}
+
+.helpdesk-timeline-dot {
+  position: absolute;
+  left: -11px;
+  top: 2.1rem;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #1976d2;
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 1px #cfd8dc;
+}
+
+.helpdesk-timeline-dot--create { background: #00897b; }
+.helpdesk-timeline-dot--reply { background: #1976d2; }
+.helpdesk-timeline-dot--staff { background: #6a1b9a; }
+.helpdesk-timeline-dot--escalate { background: #e65100; }
+
+.helpdesk-timeline-card {
+  flex: 1;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 0.85rem 1rem 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.helpdesk-timeline-date {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+
+.helpdesk-timeline-date--create { background: #00897b; }
+.helpdesk-timeline-date--event { background: #c62828; }
+
+.helpdesk-timeline-status {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin: 0 0 0.65rem;
+  line-height: 1.35;
+}
+
+.helpdesk-timeline-status--default { color: #1565c0; }
+.helpdesk-timeline-status--reply { color: #1565c0; }
+.helpdesk-timeline-status--accent { color: #c62828; }
+
+.helpdesk-timeline-body {
+  font-size: 0.9rem;
+  color: #333;
+  line-height: 1.5;
+}
+
+.helpdesk-timeline-body .ql-editor {
+  min-height: 0;
+  padding: 0;
+}
+
+.helpdesk-attach-list {
+  padding-left: 1.1rem;
+  font-size: 0.85rem;
+  margin-bottom: 0;
+}
+
+.admin-helpdesk-table th {
+  white-space: nowrap;
+}
+
+#admin-reply-editor {
+  min-height: 160px;
+  background: #fff;
+}
+
+.admin-helpdesk .ql-toolbar.ql-snow {
+  border-radius: 8px 8px 0 0;
+}
+
+.admin-helpdesk .ql-container.ql-snow {
+  border-radius: 0 0 8px 8px;
+}

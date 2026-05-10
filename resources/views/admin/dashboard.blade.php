@@ -27,6 +27,27 @@
     </div>
 @endif
 
+@if(($helpdeskTicketsNeedingAttention ?? 0) > 0)
+    <div class="alert alert-info d-flex align-items-start justify-content-between gap-3 border-info" role="alert">
+        <div>
+            <div class="fw-semibold">
+                <i class="bi bi-headset me-1"></i>
+                Helpdesk memerlukan perhatian
+            </div>
+            <div class="small">
+                Terdapat <span class="fw-semibold">{{ number_format($helpdeskTicketsNeedingAttention) }}</span>
+                tiket belum selesai (terbuka / menunggu semakan).
+            </div>
+        </div>
+        <div class="flex-shrink-0">
+            <a class="btn btn-sm btn-primary"
+               href="{{ route('admin.helpdesk.index', ['tab' => 'open']) }}">
+                Lihat helpdesk
+            </a>
+        </div>
+    </div>
+@endif
+
 <div class="row g-4">
     <div class="col-md-4">
         <div class="card shadow-sm">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Client;
+use App\Models\HelpdeskTicket;
 use Illuminate\Support\Facades\DB;
 use App\Models\AffiliateCommission;
 use App\Models\AffiliateProRequest;
@@ -89,6 +90,8 @@ public function index()
 
     $affiliateProPendingTotal = (int) $affiliateProPendingRegistered + (int) $affiliateProPendingExternal;
 
+    $helpdeskTicketsNeedingAttention = HelpdeskTicket::query()->unsolved()->count();
+
     $ga4EventReport = null;
     $ga4EventReportError = null;
     try {
@@ -124,6 +127,7 @@ public function index()
         'affiliateProPendingRegistered',
         'affiliateProPendingExternal',
         'affiliateProPendingTotal',
+        'helpdeskTicketsNeedingAttention',
         'ga4EventReport',
         'ga4EventReportError'
     ));

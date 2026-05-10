@@ -124,6 +124,7 @@
     ['route' => 'admin.clients.index', 'label' => 'Clients', 'icon' => 'bi-people', 'is' => 'admin.clients.*'],
     ['route' => 'admin.subscriptions.index', 'label' => 'Subscriptions', 'icon' => 'bi-receipt', 'is' => 'admin.subscriptions.*'],
     ['route' => 'admin.packages.index', 'label' => 'Packages', 'icon' => 'bi-box-seam', 'is' => 'admin.packages.*'],
+    ['route' => 'admin.helpdesk.index', 'label' => 'Helpdesk', 'icon' => 'bi-headset', 'is' => 'admin.helpdesk.*'],
   ];
 
   $affiliateItems = [

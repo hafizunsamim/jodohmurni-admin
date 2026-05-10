@@ -35,4 +35,11 @@ return [
         ],
     ],
 
+    /*
+    | Base URL of the member/public app (for helpdesk attachment links if admin runs on another host).
+    */
+    'member_app' => [
+        'url' => env('MEMBER_APP_URL', env('APP_URL', 'http://localhost')),
+    ],
+
 ];

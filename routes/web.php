@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\SubscriptionAdminController;
 use App\Http\Controllers\Admin\AffiliateAdminController;
 use App\Http\Controllers\Admin\AffiliateProRequestAdminController;
 use App\Http\Controllers\Admin\ImageController;
+use App\Http\Controllers\Admin\HelpdeskAdminController;
 
 $defineAdminRoutes = function () {
 
@@ -36,6 +37,10 @@ $defineAdminRoutes = function () {
 
         Route::get('/packages', [SubscriptionAdminController::class, 'packages'])->name('packages.index');
         Route::get('/packages/{id}', [SubscriptionAdminController::class, 'packageShow'])->name('packages.show');
+
+        Route::get('/helpdesk', [HelpdeskAdminController::class, 'index'])->name('helpdesk.index');
+        Route::get('/helpdesk/tickets/{helpdeskTicket}', [HelpdeskAdminController::class, 'show'])->name('helpdesk.show');
+        Route::post('/helpdesk/tickets/{helpdeskTicket}/respond', [HelpdeskAdminController::class, 'respond'])->name('helpdesk.respond');
 
         Route::get('/affiliate/codes', [AffiliateAdminController::class, 'codes'])->name('affiliate.codes');
         Route::get('/affiliate/codes/{id}', [AffiliateAdminController::class, 'codeShow'])->name('affiliate.codes.show');
