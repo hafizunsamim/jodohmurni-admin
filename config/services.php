@@ -36,10 +36,18 @@ return [
     ],
 
     /*
-    | Base URL of the member/public app (for helpdesk attachment links if admin runs on another host).
+    | Member / public app (helpdesk diisi oleh pengguna di sini).
+    |
+    | Lampiran disimpan pada stor app ahli (bukan admin). Jika admin dan ahli domain berbeza,
+    | WAJIB set MEMBER_APP_URL atau HELPDESK_ATTACHMENT_BASE_URL ke URL akar app ahli
+    | (contoh https://jodohmurni.com), jika tidak pautan /storage/... akan guna domain admin → 404.
     */
     'member_app' => [
-        'url' => env('MEMBER_APP_URL', env('APP_URL', 'http://localhost')),
+        'url' => rtrim((string) env('MEMBER_APP_URL', env('APP_URL', 'http://localhost')), '/'),
+        'attachment_base_url' => rtrim((string) env(
+            'HELPDESK_ATTACHMENT_BASE_URL',
+            env('MEMBER_APP_URL', env('APP_URL', 'http://localhost'))
+        ), '/'),
     ],
 
 ];

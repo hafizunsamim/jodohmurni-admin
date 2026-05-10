@@ -8,6 +8,14 @@
 
 @section('content')
 <div class="admin-helpdesk">
+  <div class="alert alert-secondary small mb-3" role="note">
+    <strong>Lampiran tiket:</strong> fail dimuat naik pada <strong>app ahli</strong> (bukan server admin).
+    Dalam <code>.env</code> admin production, tetapkan <code>MEMBER_APP_URL=https://domain-app-ahli-anda</code>
+    atau <code>HELPDESK_ATTACHMENT_BASE_URL=...</code> yang sama dengan URL awam app tersebut,
+    supaya pautan <code>/storage/helpdesk-attachments/...</code> dibuka di host yang betul.
+    Pastikan juga <code>php artisan storage:link</code> dijalankan pada app ahli.
+  </div>
+
   <h1 class="h3 mb-3">Helpdesk</h1>
 
   <ul class="nav nav-tabs mb-3">

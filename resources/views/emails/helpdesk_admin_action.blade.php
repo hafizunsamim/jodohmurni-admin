@@ -5,7 +5,7 @@
     'reject' => 'pentadbir telah menolak tiket helpdesk anda.',
     default => 'pentadbir telah mengemas kini tiket helpdesk anda.',
   };
-  $helpdeskUrl = rtrim(config('services.member_app.url', config('app.url')), '/') . '/helpdesk';
+  $helpdeskUrl = rtrim((string) config('services.member_app.attachment_base_url', config('app.url')), '/') . '/helpdesk';
 @endphp
 
 <p>Assalamualaikum / Hello {{ $ticket->reporter_full_name }},</p>

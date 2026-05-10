@@ -42,12 +42,12 @@ class HelpdeskAdminController extends Controller
 
         $timeline = $this->buildTimeline($ticket);
 
-        $memberStorageBase = rtrim(config('services.member_app.url', config('app.url')), '/');
+        $attachmentBaseUrl = rtrim((string) config('services.member_app.attachment_base_url', config('app.url')), '/');
 
         return view('admin.helpdesk.show', [
             'ticket' => $ticket,
             'timeline' => $timeline,
-            'memberStorageBase' => $memberStorageBase,
+            'attachmentBaseUrl' => $attachmentBaseUrl,
         ]);
     }
 

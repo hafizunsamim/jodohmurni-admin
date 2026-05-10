@@ -103,7 +103,7 @@
             <ul class="helpdesk-attach-list mt-2">
               @foreach ($item['attachment_models'] as $att)
                 <li>
-                  <a href="{{ $memberStorageBase }}/storage/{{ $att->path }}" target="_blank" rel="noopener noreferrer">
+                  <a href="{{ $attachmentBaseUrl }}/storage/{{ $att->path }}" target="_blank" rel="noopener noreferrer">
                     {{ $att->original_name ?: basename($att->path) }}
                   </a>
                 </li>
